@@ -32,9 +32,10 @@ def classify_image(model, image):
         return None
     
 def main():
-    st.set_page_config(page_title="AI Image Classifier", page_icon="🖼️", layout="centered")
+    st.set_page_config(page_title="AI Image Classifier", page_icon="📸", layout="centered")
     
-    st.title("AI Image Classifier")
+    st.title("Intellimage")
+    st.subheader("AI powered classification tool")
     st.write("Upload an image and let AI tell you what is in it!")
     
     @st.cache_resource
@@ -43,7 +44,7 @@ def main():
     
     model = load_cached_model()
     
-    uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png"])
+    uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
     
     if uploaded_file is not None:
         image = st.image(
@@ -59,7 +60,9 @@ def main():
                 if predictions:
                     st.subheader("Predictions")
                     for _, label, score in predictions: 
-                        st.write(f"**{label}**: {score:.2%}")
+                        st.write(f"**{label.upper().replace("_", "")}**: {score:.2%}")
+                    
+                    st.write(f"The object in the image uploaded closely resembles a {predictions[0][1].upper().replace("_","")}")
                         
                         
 if __name__ == "__main__":
