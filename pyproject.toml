@@ -1,3 +1,4 @@
+[project]
 name = "intellimage"
 version = "0.1.0"
 description = "AI Based image classifier"
