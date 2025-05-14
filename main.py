@@ -62,7 +62,7 @@ def main():
                     for _, label, score in predictions: 
                         st.write(f"**{label.upper().replace("_", "")}**: {score:.2%}")
                     
-                    st.write(f"The object in the image uploaded closely resembles a {predictions[0][1].upper().replace("_","")}")
+                    st.write(f"The object in the uploaded image closely resembles a {predictions[0][1].upper().replace("_","")}")
                         
                         
 if __name__ == "__main__":
